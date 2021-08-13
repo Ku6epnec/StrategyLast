@@ -7,6 +7,8 @@ public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatab
 	public Sprite Icon => _icon;
 	public Transform PivotPoint => _pivotPoint;
 
+	public Vector3 RallyPoint { get; set; }
+
 
 	[SerializeField] private Transform _unitsParent;
 
