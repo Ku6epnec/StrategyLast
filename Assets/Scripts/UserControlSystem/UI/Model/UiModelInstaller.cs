@@ -5,6 +5,7 @@ public class UiModelInstaller : MonoInstaller
 {
 	[SerializeField] private AssetsContext _legacyContext;
 	[SerializeField] private Vector3Value _vector3;
+	//[SerializeField] private BottomCenterView _BottomCenterView;
 	public override void InstallBindings()
 	{
 		Container.Bind<AssetsContext>().FromInstance(_legacyContext);
@@ -21,6 +22,10 @@ public class UiModelInstaller : MonoInstaller
 		Container.Bind<CommandCreatorBase<IStopCommand>>()
 		.To<StopCommandCommandCreator>().AsTransient();
 
+		Container.Bind<float>().WithId("Chomper").FromInstance(5f);
+		Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
+
 		Container.Bind<CommandButtonsModel>().AsTransient();
+		//Container.Bind<BottomCenterModel>().AsTransient();
 	}
 }

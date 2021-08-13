@@ -18,7 +18,7 @@ public class MainBuilding : CommandExecutorBase<IProduceUnitCommand>, ISelecatab
 
 	public override void ExecuteSpecificCommand(IProduceUnitCommand command)
 	{
-		Instantiate(command.UnitPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(0, 7)), Quaternion.identity, _unitsParent);
+		//Instantiate(command.UnitPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(0, 7)), Quaternion.identity, _unitsParent);
 	}
 
 }
