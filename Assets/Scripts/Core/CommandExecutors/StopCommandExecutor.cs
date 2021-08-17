@@ -1,4 +1,5 @@
 using System.Threading;
+using UnityEngine;
 
 public class StopCommandExecutor : CommandExecutorBase<IStopCommand>
 {
@@ -6,6 +7,7 @@ public class StopCommandExecutor : CommandExecutorBase<IStopCommand>
 
 	public override void ExecuteSpecificCommand(IStopCommand command)
 	{
+		Debug.Log("I STOP");
 		CancellationTokenSource?.Cancel();
 	}
 }

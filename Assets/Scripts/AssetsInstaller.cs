@@ -1,5 +1,6 @@
 using UnityEngine;
 using Zenject;
+using System;
 
 [CreateAssetMenu(fileName = "AssetsInstaller", menuName = "Installers/AssetsInstaller")]
 public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
@@ -22,5 +23,6 @@ public class AssetsInstaller : ScriptableObjectInstaller<AssetsInstaller>
 			 .FromInstance(_groundClicksRMB);
 
 		Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);
+		Container.Bind<IObservable<ISelecatable>>().FromInstance(_selectables);
 	}
 }

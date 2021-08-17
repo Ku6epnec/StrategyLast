@@ -6,6 +6,7 @@ public class MoveCommand : IMoveCommand
 
 	public MoveCommand(Vector3 target)
 	{
+		Debug.Log("I MOVE");
 		Target = target;
 	}
 }

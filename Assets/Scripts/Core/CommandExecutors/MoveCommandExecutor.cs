@@ -10,8 +10,10 @@ public class MoveCommandExecutor : CommandExecutorBase<IMoveCommand>
 
     public override async void ExecuteSpecificCommand(IMoveCommand command)
     {
+        Debug.Log("I MOVE");
         GetComponent<NavMeshAgent>().destination = command.Target;
-        _animator.SetTrigger(Animator.StringToHash("Walk"));
+        //_animator.SetTrigger(Animator.StringToHash("Walk"));
+        _animator.SetTrigger("Walk");
         _stopCommandExecutor.CancellationTokenSource = new CancellationTokenSource();
         try
         {
@@ -29,6 +31,7 @@ public class MoveCommandExecutor : CommandExecutorBase<IMoveCommand>
             GetComponent<NavMeshAgent>().ResetPath();
         }
         _stopCommandExecutor.CancellationTokenSource = null;
-        _animator.SetTrigger(Animator.StringToHash("Idle"));
+        //_animator.SetTrigger(Animator.StringToHash("Idle"));
+        _animator.SetTrigger("Idle");
     }
 }

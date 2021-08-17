@@ -4,12 +4,13 @@ using Zenject;
 public class UiModelInstaller : MonoInstaller
 {
 	[SerializeField] private AssetsContext _legacyContext;
-	[SerializeField] private Vector3Value _vector3;
+	[SerializeField] private Sprite _chomperSprite;
+	//[SerializeField] private Vector3Value _vector3;
 	//[SerializeField] private BottomCenterView _BottomCenterView;
 	public override void InstallBindings()
 	{
 		Container.Bind<AssetsContext>().FromInstance(_legacyContext);
-		Container.Bind<Vector3Value>().FromInstance(_vector3);
+		//Container.Bind<Vector3Value>().FromInstance(_vector3);
 
 		Container.Bind<CommandCreatorBase<IProduceUnitCommand>>()
 		.To<ProduceUnitCommandCommandCreator>().AsTransient();
@@ -24,6 +25,7 @@ public class UiModelInstaller : MonoInstaller
 
 		Container.Bind<float>().WithId("Chomper").FromInstance(5f);
 		Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
+		Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);
 
 		Container.Bind<CommandButtonsModel>().AsTransient();
 		//Container.Bind<BottomCenterModel>().AsTransient();

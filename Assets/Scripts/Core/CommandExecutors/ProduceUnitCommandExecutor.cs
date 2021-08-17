@@ -22,14 +22,14 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
 
         var innerTask = (UnitProductionTask)_queue[0];
         innerTask.TimeLeft -= Time.deltaTime;
-        if (innerTask.TimeLeft <= 0)
+        if (innerTask.TimeLeft <= 0 )
         {
             removeTaskAtIndex(0);
-            var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
-            var queue = instance.GetComponent<ICommandsQueue>();
-            var mainBuilding = GetComponent<MainBuilding>();
-            queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
-            //Instantiate(innerTask.UnitPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(0, 7)), Quaternion.identity, _unitsParent);
+            Instantiate(innerTask.UnitPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(0, 7)), Quaternion.identity, _unitsParent);
+            //var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
+            //var queue = instance.GetComponent<ICommandsQueue>();
+            //var mainBuilding = GetComponent<MainBuilding>();
+            //queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
         }
     }
 
@@ -48,4 +48,6 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
     {
         _queue.Add(new UnitProductionTask(command.ProductionTime, command.Icon, command.UnitPrefab, command.UnitName));
     }
+
+    
 }
