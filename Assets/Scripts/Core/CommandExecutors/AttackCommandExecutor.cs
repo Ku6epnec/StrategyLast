@@ -1,11 +1,10 @@
-/*using System;
+using System;
 using System.Threading;
 using System.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 using UnityEngine.AI;
 using Zenject;
-
 public class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
 {
     [SerializeField] private Animator _animator;
@@ -152,6 +151,7 @@ public class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
 
     private void StartAttackingTargets(IAttackable target)
     {
+        Debug.Log($"{name} is attacking!");
         GetComponent<NavMeshAgent>().isStopped = true;
         GetComponent<NavMeshAgent>().ResetPath();
         _animator.SetTrigger(Animator.StringToHash("Attack"));
@@ -202,8 +202,9 @@ public class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
             }
         }
     }
-}*/
-using System.Threading.Tasks;
+}
+
+/*using System.Threading.Tasks;
 using UnityEngine;
 
 public class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
@@ -214,4 +215,4 @@ public class AttackCommandExecutor : CommandExecutorBase<IAttackCommand>
 		Debug.Log($"{name} is attacking!");
         return Task.CompletedTask;
     }
-}
+}*/

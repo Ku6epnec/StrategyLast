@@ -16,7 +16,7 @@ public class MainBuilding : MonoBehaviour, ISelecatable, IAttackable
 
 	[SerializeField] private float _maxHealth = 1000;
 
-	private float _health = 1000;
+	[SerializeField] private float _health = 1000;
 
 	public void ReceiveDamage(int amount)
 	{

@@ -10,7 +10,7 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
 
     [SerializeField] private Transform _unitsParent;
     [SerializeField] private int _maximumUnitsInQueue = 6;
-    [SerializeField] private DiContainer _diContainer;
+    [Inject] private DiContainer _diContainer;
 
     private ReactiveCollection<IUnitProductionTask> _queue = new ReactiveCollection<IUnitProductionTask>();
 
@@ -26,11 +26,15 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
         if (innerTask.TimeLeft <= 0 )
         {
             removeTaskAtIndex(0);
-            Instantiate(innerTask.UnitPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(0, 7)), Quaternion.identity, _unitsParent);
-            //var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
-            //var queue = instance.GetComponent<ICommandsQueue>();
-            //var mainBuilding = GetComponent<MainBuilding>();
-            //queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
+            //_diContainer.InstantiatePrefab(innerTask.UnitPrefab, new Vector3(Random.Range(-10, 10), 0, Random.Range(-10, 10)), Quaternion.identity, _unitsParent);
+            //var instance = Instantiate(innerTask.UnitPrefab, new Vector3(Random.Range(-3, 3), 0, Random.Range(0, 7)), Quaternion.identity, _unitsParent);
+            var instance = _diContainer.InstantiatePrefab(innerTask.UnitPrefab, transform.position, Quaternion.identity, _unitsParent);
+            var queue = instance.GetComponent<ICommandsQueue>();
+            var mainBuilding = GetComponent<MainBuilding>();
+            queue.EnqueueCommand(new MoveCommand(mainBuilding.RallyPoint));
+
+            var factionMember = instance.GetComponent<FactionMember>();
+            factionMember.SetFaction(GetComponent<FactionMember>().FactionId);
         }
     }
 
