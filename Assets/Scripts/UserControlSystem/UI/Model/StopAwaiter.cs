@@ -11,6 +11,6 @@ public class StopAwaiter : AwaiterBase<AsyncExtensions.Void>
     private void onStop()
     {
         _unitMovementStop.OnStop -= onStop;
-        onWaitFinish(new AsyncExtensions.Void());
+        OnWaitFinish(new AsyncExtensions.Void());
     }
 }

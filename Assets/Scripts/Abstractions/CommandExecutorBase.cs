@@ -1,8 +1,23 @@
 using UnityEngine;
+using System.Threading.Tasks;
 
-public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor, ICommand
+public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor, ICommandExecutor<T> where T : class, ICommand
 {
-	public void ExecuteCommand(object command) => ExecuteSpecificCommand((T)command);
+    public async Task TryExecuteCommand(object command)
+    {
+        var specificCommand = command as T;
+        if (specificCommand != null)
+        {
+            await ExecuteSpecificCommand(specificCommand);
+        }
+    }
+    /*public async Task TryExecuteCommand(object command)
+    {
+        if (command is T specificCommand)
+        {
+            await ExecuteSpecificCommand(specificCommand);
+        }
+    }*/
 
-	public abstract void ExecuteSpecificCommand(T command);
+    public abstract Task ExecuteSpecificCommand(T command);
 }

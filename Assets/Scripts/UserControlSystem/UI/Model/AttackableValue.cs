@@ -2,7 +2,11 @@ using System;
 using UnityEngine;
 
 [CreateAssetMenu(fileName = nameof(AttackableValue), menuName = "Strategy Game/" + nameof(AttackableValue), order = 0)]
-public class AttackableValue : ScriptableObjectValueBase<IAttackable>
+public class AttackableValue : StatelessScriptableObjectValueBase<IAttackable>
+{
+
+}
+/*public class AttackableValue : ScriptableObjectValueBase<IAttackable>
 {
 	public new IAttackable CurrentValue { get; private set; }
 	public Action<IAttackable> OnSelected;
@@ -12,4 +16,4 @@ public class AttackableValue : ScriptableObjectValueBase<IAttackable>
 		CurrentValue = value;
 		OnSelected?.Invoke(value);
 	}
-}
+}*/

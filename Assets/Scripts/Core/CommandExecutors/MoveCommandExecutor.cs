@@ -1,4 +1,5 @@
 using System.Threading;
+using System.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -8,9 +9,9 @@ public class MoveCommandExecutor : CommandExecutorBase<IMoveCommand>
     [SerializeField] private Animator _animator;
     [SerializeField] private StopCommandExecutor _stopCommandExecutor;
 
-    public override async void ExecuteSpecificCommand(IMoveCommand command)
+    public override async Task ExecuteSpecificCommand(IMoveCommand command)
     {
-        Debug.Log("I MOVE");
+        Debug.Log("I SAID MOVE");
         GetComponent<NavMeshAgent>().destination = command.Target;
         //_animator.SetTrigger(Animator.StringToHash("Walk"));
         _animator.SetTrigger("Walk");

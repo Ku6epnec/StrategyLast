@@ -23,6 +23,9 @@ public class UiModelInstaller : MonoInstaller
 		Container.Bind<CommandCreatorBase<IStopCommand>>()
 		.To<StopCommandCommandCreator>().AsTransient();
 
+		Container.Bind<CommandCreatorBase<ISetRallyPointCommand>>()
+				.To<SetRallyPointCommandCreator>().AsTransient();
+
 		Container.Bind<float>().WithId("Chomper").FromInstance(5f);
 		Container.Bind<string>().WithId("Chomper").FromInstance("Chomper");
 		Container.Bind<Sprite>().WithId("Chomper").FromInstance(_chomperSprite);

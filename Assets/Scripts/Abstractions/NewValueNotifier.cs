@@ -11,6 +11,6 @@ public class NewValueNotifier<TAwaited> : AwaiterBase<TAwaited>
     private void onNewValue(TAwaited obj)
     {
         _scriptableObjectValueBase.OnNewValue -= onNewValue;
-        onWaitFinish(obj);
+        OnWaitFinish(obj);
     }
 }

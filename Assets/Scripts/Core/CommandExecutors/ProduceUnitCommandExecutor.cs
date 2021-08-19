@@ -2,6 +2,7 @@ using UniRx;
 using Zenject;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using System.Threading.Tasks;
 
 public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitCommand>, IUnitProducer
 {
@@ -44,10 +45,9 @@ public class ProduceUnitCommandExecutor : CommandExecutorBase<IProduceUnitComman
         _queue.RemoveAt(_queue.Count - 1);
     }
 
-    public override void ExecuteSpecificCommand(IProduceUnitCommand command)
+    public override Task ExecuteSpecificCommand(IProduceUnitCommand command)
     {
         _queue.Add(new UnitProductionTask(command.ProductionTime, command.Icon, command.UnitPrefab, command.UnitName));
-    }
-
-    
+        return Task.CompletedTask;
+    }    
 }
