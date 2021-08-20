@@ -10,6 +10,11 @@ public class BottomCenterPresenter : MonoBehaviour
     private IDisposable _productionQueueAddCt;
     private IDisposable _productionQueueRemoveCt;
     private IDisposable _productionQueueReplaceCt;
+
+    private IDisposable _upgraderQueueAddCt;
+    private IDisposable _upgraderQueueRemoveCt;
+    private IDisposable _upgraderQueueReplaceCt;
+
     private IDisposable _cancelButtonCts;
 
 

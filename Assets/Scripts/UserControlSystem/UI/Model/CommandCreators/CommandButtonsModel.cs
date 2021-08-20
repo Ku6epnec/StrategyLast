@@ -27,7 +27,6 @@ public class CommandButtonsModel
 		OnCommandAccepted?.Invoke(commandExecutor);
 
 		_unitProducer.ProcessCommandExecutor(commandExecutor, command => executeCommandWrapper(command, commandsQueue));
-		//AsyncPending();
 
 		_attacker.ProcessCommandExecutor(commandExecutor, command => executeCommandWrapper(command, commandsQueue));
 		_stopper.ProcessCommandExecutor(commandExecutor, command => executeCommandWrapper(command, commandsQueue));
@@ -35,13 +34,6 @@ public class CommandButtonsModel
 		_patroller.ProcessCommandExecutor(commandExecutor, command => executeCommandWrapper(command, commandsQueue));
 		_rallySetter.ProcessCommandExecutor(commandExecutor, command => executeCommandWrapper(command, commandsQueue));
 	}
-
-	/*private async void AsyncPending()
-    {
-		_commandIsPending = true;
-		await Task.Delay(5000);
-		_commandIsPending = false;
-    }*/
 
 	public void executeCommandWrapper(object command, ICommandsQueue commandsQueue)
 	{

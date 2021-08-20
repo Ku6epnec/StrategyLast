@@ -11,13 +11,6 @@ public abstract class CommandExecutorBase<T> : MonoBehaviour, ICommandExecutor, 
             await ExecuteSpecificCommand(specificCommand);
         }
     }
-    /*public async Task TryExecuteCommand(object command)
-    {
-        if (command is T specificCommand)
-        {
-            await ExecuteSpecificCommand(specificCommand);
-        }
-    }*/
 
-    public abstract Task ExecuteSpecificCommand(T command);
+    public abstract Task ExecuteSpecificCommand(T command); 
 }

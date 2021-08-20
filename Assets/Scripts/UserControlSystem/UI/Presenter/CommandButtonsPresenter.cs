@@ -9,25 +9,24 @@ public class CommandButtonsPresenter : MonoBehaviour
     [SerializeField] private AssetsContext _context;
 
     [Inject] private CommandButtonsModel _model;
+    [Inject] private CommandCreatorBase<IAttackCommand> _attacker;
 
     private ISelecatable _currentSelectable;
 
     private void Start()
     {
-
         _view.OnClick += _model.OnCommandButtonClicked;
+
         _model.OnCommandSent += _view.UnblockAllInteractions;
         _model.OnCommandCancel += _view.UnblockAllInteractions;
         _model.OnCommandAccepted += _view.BlockInteractions;
 
         _selectable.OnNewValue += onSelected;
-        //_selectable.OnSelected += onSelected;
         onSelected(_selectable.CurrentValue);
     }
 
     private void onSelected(ISelecatable selectable)
     {
-
         if (_currentSelectable == selectable)
         {
             return;

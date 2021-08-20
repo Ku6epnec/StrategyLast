@@ -15,6 +15,7 @@ public class CommandButtonsView : MonoBehaviour
 	[SerializeField] private GameObject _patrolButton;
 	[SerializeField] private GameObject _stopButton;
 	[SerializeField] private GameObject _produceUnitButton;
+	[SerializeField] private GameObject _upgradeUnitButton;
 	[SerializeField] private GameObject _setRallyPointButton;
 
 	private Dictionary<Type, GameObject> _buttonsByExecutorType;
@@ -33,16 +34,17 @@ public class CommandButtonsView : MonoBehaviour
 		_buttonsByExecutorType
 		.Add(typeof(CommandExecutorBase<IProduceUnitCommand>), _produceUnitButton);
 		_buttonsByExecutorType
+		.Add(typeof(CommandExecutorBase<IUpgradeUnitCommand>), _upgradeUnitButton);
+		_buttonsByExecutorType
 		.Add(typeof(CommandExecutorBase<ISetRallyPointCommand>), _setRallyPointButton);
 	}
 
 	public void BlockInteractions(ICommandExecutor ce)
 	{
 		UnblockAllInteractions();
+
 		getButtonGameObjectByType(ce.GetType())
 		.GetComponent<Selectable>().interactable = false;
-
-		//_moveButton.GetComponent<Selectable>().interactable = true;
 	}
 
 	public void UnblockAllInteractions() => setInteractible(true);
@@ -54,6 +56,7 @@ public class CommandButtonsView : MonoBehaviour
 		_patrolButton.GetComponent<Selectable>().interactable = value;
 		_stopButton.GetComponent<Selectable>().interactable = value;
 		_produceUnitButton.GetComponent<Selectable>().interactable = value;
+		_upgradeUnitButton.GetComponent<Selectable>().interactable = value;
 		_setRallyPointButton.GetComponent<Selectable>().interactable = value;
 	}
 

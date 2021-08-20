@@ -76,10 +76,8 @@ crashlytics-build.properties
 # End of https://www.toptal.com/developers/gitignore/api/unity
 /Library
 /Assets/3D Game Kit - Character Pack/Characters/Ellen
-/Assets/3D Game Kit - Character Pack/Characters/Grenadier
 /Assets/3D Game Kit - Character Pack/Characters/Gunner
 /Assets/3D Game Kit - Character Pack/Characters/Spitter
 /Assets/3D Game Kit - Character Pack/Characters/Ellen.meta
-/Assets/3D Game Kit - Character Pack/Characters/Grenadier.meta
 /Assets/3D Game Kit - Character Pack/Characters/Gunner.meta
 /Assets/3D Game Kit - Character Pack/Characters/Spitter.meta
